@@ -6,7 +6,7 @@ This is a full-stack application that allows users to search for books using the
 
 ## Deployed Application
 
-Check out the live application [here](https://your-deployed-app-url.com).
+Check out the live application [here](https://book-search-engine-and-manager-16b16f7fd358.herokuapp.com/).
 
 ## Features
 
