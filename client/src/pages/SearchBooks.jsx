@@ -42,4 +42,22 @@ const SearchBooks = () => {
     }
   };
 
-  
+  const handleSaveBook = async (bookId) => {
+    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await saveBook({
+        variables: { bookData: { ...bookToSave } },
+      });
+
+      console.log('book saved');
+    } catch (err) {
+      console.error(err);
+    }
+  };
