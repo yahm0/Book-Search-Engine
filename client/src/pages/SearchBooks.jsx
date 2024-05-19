@@ -61,3 +61,38 @@ const SearchBooks = () => {
       console.error(err);
     }
   };
+
+
+  return (
+    <>
+      <div>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            placeholder="Search for a book"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div>
+        {searchedBooks.map((book) => (
+          <div key={book.bookId}>
+            <h3>{book.title}</h3>
+            <p>{book.description}</p>
+            <img src={book.image} alt={book.title} />
+            <p>Authors: {book.authors.join(', ')}</p>
+            <a href={book.link} target="_blank" rel="noopener noreferrer">More Info</a>
+            {Auth.loggedIn() && (
+              <button onClick={() => handleSaveBook(book.bookId)}>Save Book</button>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default SearchBooks;
