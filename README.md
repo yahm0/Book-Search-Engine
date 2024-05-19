@@ -58,7 +58,7 @@ MONGODB_URI=mongodb://localhost:27017/yourdbname
 JWT_SECRET=your_jwt_secret
 ```
 
-Usage
+## Usage
 
 1. Start the server:
 
@@ -76,8 +76,8 @@ npm start
 
 3. Open your browser and go to http://localhost:3000.
 
-License
+## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
-Feel free to customize the URLs, repository names, and additional information specific to your project. Make sure to include the actual screenshot image in the `client/public/` directory with the filename `screenshot.png`, or adjust the path to where your screenshot is located.
+ - Feel free to customize the URLs, repository names, and additional information specific to your project. Make sure to include the actual screenshot image in the `client/public/` directory with the filename `screenshot.png`, or adjust the path to where your screenshot is located.
