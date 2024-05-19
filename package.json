@@ -4,7 +4,9 @@
   "description": "A book search and management application",
   "main": "server/server.js",
   "scripts": {
-    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-server": "cd server && npm start",
+    "start-client": "cd client && npm start",
     "build": "cd client && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
