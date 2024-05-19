@@ -25,3 +25,26 @@ const SavedBooks = () => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
+
+  return (
+    <>
+      <div>
+        <h1>Viewing saved books!</h1>
+        <div>
+          {userData.savedBooks?.map((book) => (
+            <div key={book.bookId}>
+              <h3>{book.title}</h3>
+              <p>{book.description}</p>
+              <img src={book.image} alt={book.title} />
+              <p>Authors: {book.authors.join(', ')}</p>
+              <a href={book.link} target="_blank" rel="noopener noreferrer">More Info</a>
+              <button onClick={() => handleDeleteBook(book.bookId)}>Delete Book</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default SavedBooks;
