@@ -1,26 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { isAuthenticated, logout } from '../utils/auth';
+import React from 'react'; // Import React library
+import { Link } from 'react-router-dom'; // Import Link component from React Router
+import { isAuthenticated, logout } from '../utils/auth'; // Import authentication utilities
 
 const Navbar = () => {
   return (
     <nav>
-      {/* Link to the home page for searching books */}
-      <Link to="/">Search for Books</Link>
-
-      {Auth.loggedIn() ? (
+      <Link to="/">Search for Books</Link> {/* Link to the SearchBooks page */}
+      {isAuthenticated() ? (
         <>
-          {/* Link to the saved books page if the user is logged in */}
-          <Link to="/saved">See My Books</Link>
-          {/* Link to log out the user */}
-          <a href="/" onClick={() => Auth.logout()}>Logout</a>
+          <Link to="/saved">See My Books</Link> {/* Link to the SavedBooks page */}
+          <a href="/" onClick={() => logout()}>Logout</a> {/* Logout link */}
         </>
       ) : (
-        // Link to the login/signup page if the user is not logged in
-        <Link to="/login">Login/Signup</Link>
+        <Link to="/login">Login/Signup</Link> {/* Link to the Login/Signup page */}
       )}
     </nav>
   );
 };
 
-export default Navbar; // Export the Navbar component.
+export default Navbar; // Export Navbar component as the default export

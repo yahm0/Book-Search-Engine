@@ -1,33 +1,35 @@
-import React from 'react';
-import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
+import React from 'react'; // Import React library
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client'; // Import Apollo Client libraries
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // Import React Router libraries
+import Navbar from './components/Navbar'; // Import Navbar component
+import Header from './components/Header'; // Import Header component
+import Footer from './components/Footer'; // Import Footer component
+import SearchBooks from './pages/SearchBooks'; // Import SearchBooks page component
+import SavedBooks from './pages/SavedBooks'; // Import SavedBooks page component
 
+// Create a new Apollo Client instance
 const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
+  uri: '/graphql', // GraphQL endpoint URI
+  cache: new InMemoryCache(), // Configure cache
 });
 
 function App() {
   return (
+    // Provide Apollo Client to the application
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Header />
-          <Navbar />
+          <Header /> {/* Render Header component */}
+          <Navbar /> {/* Render Navbar component */}
           <Switch>
-            <Route exact path='/' component={SearchBooks} />
-            <Route exact path='/saved' component={SavedBooks} />
+            <Route exact path='/' component={SearchBooks} /> {/* Route for SearchBooks page */}
+            <Route exact path='/saved' component={SavedBooks} /> {/* Route for SavedBooks page */}
           </Switch>
-          <Footer />
+          <Footer /> {/* Render Footer component */}
         </div>
       </Router>
     </ApolloProvider>
   );
 }
 
-export default App;
+export default App; // Export App component as the default export
