@@ -17,3 +17,17 @@ const typeDefs = gql`
     image: String
     link: String
   }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  input BookInput {
+    bookId: String
+    authors: [String]
+    description: String
+    title: String
+    image: String
+    link: String
+  }
