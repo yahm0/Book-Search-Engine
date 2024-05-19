@@ -1,4 +1,4 @@
-# Book-Search-Engine
+# Book Search Engine and Manager
 
 ![Book Search and Management App Screenshot](./client/public/screenshot.png)
 
