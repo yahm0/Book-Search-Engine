@@ -1,6 +1,6 @@
-import React from 'react'; // Import React to use JSX.
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation.
-import Auth from '../utils/auth'; // Import authentication utility.
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { isAuthenticated, logout } from '../utils/auth';
 
 const Navbar = () => {
   return (

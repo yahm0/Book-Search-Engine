@@ -1,31 +1,40 @@
-const jwt = require('jsonwebtoken');
+// Function to decode JWT
+export const decodeToken = (token) => {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error('Failed to decode token:', error);
+    return null;
+  }
+};
 
-const secret = process.env.JWT_SECRET;
-const expiration = '2h';
+// Function to check if the user is authenticated
+export const isAuthenticated = () => {
+  const token = localStorage.getItem('id_token');
+  if (!token) return false;
 
-module.exports = {
-  authMiddleware: function ({ req }) {
-    let token = req.body.token || req.query.token || req.headers.authorization;
+  const decodedToken = decodeToken(token);
+  if (!decodedToken) return false;
 
-    if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
-    }
+  const currentTime = Date.now() / 1000;
+  return decodedToken.exp > currentTime;
+};
 
-    if (!token) {
-      return req;
-    }
+// Function to get user data from the token
+export const getUserFromToken = () => {
+  const token = localStorage.getItem('id_token');
+  if (!token) return null;
 
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
-    }
+  return decodeToken(token);
+};
 
-    return req;
-  },
-  signToken: function ({ username, email, _id }) {
-    const payload = { username, email, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-  },
+// Function to log out the user
+export const logout = () => {
+  localStorage.removeItem('id_token');
+  window.location.assign('/');
 };
