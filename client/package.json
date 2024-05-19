@@ -18,7 +18,10 @@
       "react-scripts": "^5.0.0",
       "stream-browserify": "^3.0.0",
       "react-app-rewired": "^2.1.8",
-      "customize-cra": "^1.0.0"
+      "customize-cra": "^1.0.0",
+      "apollo-cache-inmemory": "^1.6.6",
+      "apollo-client": "^2.6.10",
+      "apollo-link-http": "^1.5.17"
     },
     "devDependencies": {
       "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
